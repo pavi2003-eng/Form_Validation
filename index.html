@@ -65,7 +65,7 @@
             function lasttnameValidate()
             {
                 var lname=document.getElementById("ln").value;
-            if(lname="")
+            if(lname.length==0)
             {
                 document.getElementById("lerror").style="display:block;"
                 document.getElementById("ln").style="border: 2px solid red;"
