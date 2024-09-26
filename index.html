@@ -34,21 +34,13 @@
                 <span id="perror1">Phone number is required</span>
                 <span id="perror2">Invalid Phone number</span>
             </div>
-            <input type="button" value="Submit" class="button" onclick="allvalidation"/>
+            <input type="button" value="Submit" class="button"/>
         </form>
         <script>
-            function allvalidation()
-            {
-                firstnamevalidate();
-                lasttnameValidate();
-                emailValidate();
-                phonenoValidate();
-                console.log("Thank You");
-            }
             function firstnamevalidate()
             {
                 var fname=document.getElementById('fn').value.trim();
-            if(fname=="")
+           if(fname.length==0)
             {
                 document.getElementById("ferror1").style="display:block;"
                 document.getElementById("ferror2").style="display:none;"
