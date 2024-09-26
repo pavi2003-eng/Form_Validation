@@ -1,0 +1,145 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Registration Form</title>
+        <link href="Image/images.jfif" rel="icon">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>Registration Form</h1>
+        <form>
+            <div class="fname common">
+                <label>First Name<span style="color: red;">*</span></label>
+                <input type="text" placeholder="Your answer" id="fn" class="box" onkeyup="firstnamevalidate()"/>
+                <span id="ferror1">Firstname is required</span>
+                <span id="ferror2">Firstname required atleast 3 character</span>
+            </div>
+            <div class="lname common">
+                <label>Last Name</label>
+                <input type="text" placeholder="Your answer" id="ln" class="box" onkeyup="lasttnameValidate()"/>
+                <span id="lerror">Lastname is required</span>
+            </div>
+            <div class="email common">
+                <label>Email<span style="color: red;">*</span></label>
+                <input type="email" placeholder="Your answer" id="em" class="box" onkeyup="emailValidate()"/>   
+                <span id="eerror1">Email is required</span>
+                <span id="eerror2">Invalid Email</span>
+            </div>
+            <div class="number common">
+                <label>Phone Number<span style="color: red;">*</span></label>
+                <input type="number" placeholder="Your answer" id="pn" class="box" onkeyup="phonenoValidate()"/>
+                <span id="perror1">Phone number is required</span>
+                <span id="perror2">Invalid Phone number</span>
+            </div>
+            <input type="button" value="Submit" class="button" onclick="allvalidation"/>
+        </form>
+        <script>
+            function allvalidation()
+            {
+                firstnamevalidate();
+                lasttnameValidate();
+                emailValidate();
+                phonenoValidate();
+                console.log("Thank You");
+            }
+            function firstnamevalidate()
+            {
+                var fname=document.getElementById('fn').value.trim();
+            if(fname=="")
+            {
+                document.getElementById("ferror1").style="display:block;"
+                document.getElementById("fn").style="border:2px solid red;"
+            }
+            else
+            {
+            if(fname.length<3)
+            {
+                document.getElementById("ferror1").style="display:none;"
+                document.getElementById("ferror2").style="display:block;"
+                document.getElementById("fn").style="border:2px solid red;"
+            }
+            else
+            {
+                document.getElementById("ferror1").style="display:none;"
+                document.getElementById("ferror2").style="display:none;"
+                document.getElementById("fn").style="border:2px solid green;"
+            }
+            }
+            }
+            function lasttnameValidate()
+            {
+                var lname=document.getElementById("ln").value;
+            if(lname="")
+            {
+                document.getElementById("lerror").style="display:block;"
+                document.getElementById("ln").style="border: 2px solid red;"
+            }
+            else
+            {
+                document.getElementById("lerror").style="display:none;"
+                document.getElementById("ln").style="border: 2px solid green;"
+            }
+            }
+            function emailValidate()
+            {
+                var email=document.getElementById('em').value.trim();
+                var emailvalidaion=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                if(email)
+                {
+                    if(emailvalidaion.test(email))
+                    {
+                        document.getElementById('em').style='border:2px solid green;'
+                        document.getElementById('eerror1').style="display:none;"
+                        document.getElementById('eerror2').style="display:none;"
+                    }
+                    else
+                    {
+                        document.getElementById('em').style='border:2px solid red;'
+                        document.getElementById('eerror1').style="display:none;"
+                        document.getElementById('eerror2').style="display:block;"
+
+                    }
+                }
+                else
+                {
+                    document.getElementById('em').style='border:2px solid red;'
+                    document.getElementById('eerror1').style="display:block;"
+                    document.getElementById('eerror2').style="display:none;"
+                }
+            }
+            function phonenoValidate()
+            {
+                var phoneno=document.getElementById('pn').value;
+                var phonevalidation = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+            if(phoneno=="")
+            {
+                document.getElementById('pn').style='border:2px solid red;'
+                document.getElementById('perror1').style="display:block;"
+                document.getElementById('perror2').style="display:none;"
+            }
+            else
+            {
+                if(phoneno.match(phonevalidation))
+            {
+                document.getElementById('pn').style='border:2px solid green;'
+                document.getElementById('perror2').style="display:none;"
+                document.getElementById('perror1').style="display:none;"
+            }
+            else
+            {
+                document.getElementById('pn').style='border:2px solid red;'
+                document.getElementById('perror2').style="display:block;"
+                document.getElementById('perror1').style="display:none;"
+            }
+            }
+        }
+        </script>
+          <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+          <script>
+            AOS.init();
+          </script>
+    </body>
+</html>
